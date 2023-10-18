@@ -11,6 +11,8 @@ let time_field = document.getElementById('sel')
 let countdown = document.querySelector('.timer')
 let time
 
+let header = document.querySelector('.header')
+
 const dict = {
     'light.css': '#FFFFFF',
     'dark.css': 'rgba(22, 24, 43, 1)'
@@ -37,6 +39,13 @@ function shuffle(array) {
     return array;
   }
 
+document.addEventListener('mousemove', function(e) {
+    let dx = e.pageX - window.innerWidth / 2
+    let dy = e.pageY - window.innerHeight / 2
+    let angleX = 20 * dx / window.innerWidth / 2
+    let angleY = 20 * dy / window.innerHeight / 2
+    time_field.style.transform = `rotateX(${angleY}deg) rotateY(${angleX}deg)`
+})
 
 switch_theme.addEventListener('click', function() {
     let theme = document.getElementById('theme')
@@ -98,7 +107,6 @@ class Question {
         }
     }
 }
-
 
 let current_question
 let correct_answers_given
